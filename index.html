@@ -5,57 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>PickUpTheHitch</title>
     <link rel="stylesheet" href="TemplateData/style.css">
-    
-    <style>
-      /* Обнуляем всё и запрещаем появление скроллбаров */
-      html, body {
-        width: 100% !important;
-        height: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-        background-color: #000;
-      }
-      
-      /* Контейнер намертво привязываем к границам вьюпорта */
-      #unity-container, 
-      #unity-container.unity-desktop, 
-      #unity-container.unity-mobile {
-        width: 100% !important;
-        height: 100% !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        transform: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      
-      /* Канвас насильно растягивается на 100% ширины и высоты */
-      #unity-canvas {
-        width: 100% !important;
-        height: 100% !important;
-        display: block !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-      }
-      
-      /* Индикатор загрузки центрируется строго посередине экрана */
-      #unity-loading-bar {
-        position: absolute !important;
-        left: 50% !important;
-        top: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        z-index: 10;
-      }
-    </style>
   </head>
   <body>
     <div id="unity-container">
-      <canvas id="unity-canvas" tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div class="css-spinner"></div>
         <div id="unity-progress-bar-empty">
@@ -69,6 +22,7 @@
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
 
+      // Динамическая проверка наличия фоновой текстуры Background.png в TemplateData
       var bgImg = new Image();
       bgImg.src = 'TemplateData/Background.png';
       bgImg.onload = function() {
@@ -78,17 +32,15 @@
       };
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/DumatikScepca.loader.js";
+      var loaderUrl = buildUrl + "/Dumatik_Build.loader.js";
       var config = {
-        dataUrl: buildUrl + "/DumatikScepca.data.unityweb",
-        frameworkUrl: buildUrl + "/DumatikScepca.framework.js.unityweb",
-        codeUrl: buildUrl + "/DumatikScepca.wasm.unityweb",
+        dataUrl: buildUrl + "/Dumatik_Build.data.unityweb",
+        frameworkUrl: buildUrl + "/Dumatik_Build.framework.js.unityweb",
+        codeUrl: buildUrl + "/Dumatik_Build.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "PickUpTheHitch",
         productVersion: "1.0",
-        // Заставляем движок пересчитывать внутренний буфер под CSS-размер
-        matchWebGLToCanvasSize: true, 
       };
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
