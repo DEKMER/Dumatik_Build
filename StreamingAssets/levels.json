@@ -1,0 +1,38 @@
+[
+        {
+            "round_id": "1",
+            "vehicle_type": "basic_vehicle",
+            "bg_type": "bg1",
+            "target_sum": 9,
+            "current_weight": 6,
+            "ui_options": [
+                5,
+                6,
+                3
+            ]
+        },
+        {
+            "round_id": "2",
+            "vehicle_type": "basic_vehicle",
+            "bg_type": "bg2",
+            "target_sum": 9,
+            "current_weight": 3,
+            "ui_options": [
+                4,
+                5,
+                2
+            ]
+        },
+        {
+            "round_id": "2",
+            "vehicle_type": "basic_vehicle",
+            "bg_type": "bg3",
+            "target_sum": 9,
+            "current_weight": 5,
+            "ui_options": [
+                4,
+                1,
+                3
+            ]
+        }
+    ]
