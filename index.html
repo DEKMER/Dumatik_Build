@@ -2,13 +2,13 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=yes">
     <title>PickUpTheHitch</title>
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container">
-      <canvas id="unity-canvas" width="1920" height="1080" tabindex="-1"></canvas>
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div class="css-spinner"></div>
         <div id="unity-progress-bar-empty">
@@ -22,15 +22,6 @@
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
 
-      // Динамическая проверка наличия фоновой текстуры Background.png в TemplateData
-      var bgImg = new Image();
-      bgImg.src = 'TemplateData/Background.png';
-      bgImg.onload = function() {
-        document.body.style.backgroundImage = "url('TemplateData/Background.png')";
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundPosition = "center";
-      };
-
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Dumatik_Build.loader.js";
       var config = {
@@ -41,14 +32,8 @@
         companyName: "DefaultCompany",
         productName: "PickUpTheHitch",
         productVersion: "1.0",
+        matchWebGLToCanvasSize: true
       };
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-      }
 
       var script = document.createElement("script");
       script.src = loaderUrl;
